@@ -5,7 +5,7 @@ const Features = () => {
   const { title, image, subtitle, paragraphs, icon } = features;
 
   return (
-    <section className="section">
+    <section className="section my-20">
       <div className="container mx-auto">
         <div className="flex flex-col 2xl:flex-row 2xl:gap-x-10 2xl:-order:1">
           <div className="flex-1 order-1 2xl:-order-1">
@@ -18,7 +18,6 @@ const Features = () => {
             <div>
               {paragraphs.map((item, key) => {
                 const { title, icon, subtitle } = item;
-                console.log("awdw");
                 return (
                   <div className="flex mb-5 last:mb-2">
                     <div className="relative top-1 ">{icon}</div>
