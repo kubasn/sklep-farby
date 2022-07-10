@@ -3,6 +3,7 @@ import Features from "./components/Features";
 import Features2 from "./components/Features2";
 import Menu from "./components/Menu";
 import NewItems from "./components/NewItems";
+import Newsletter from "./components/Newsletter";
 import Products from "./components/Products";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <NewItems />
       <Features2 />
       <Products />
+      <Newsletter />
     </div>
   );
 }
