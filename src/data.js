@@ -41,7 +41,12 @@ export const statsDetails = [
   },
 ];
 
-export const navigation = {};
+export const navigation = [
+  { name: "Home", linkTo: "home" },
+  { name: "O nas", linkTo: "about-us" },
+  { name: "Farby", linkTo: "paints" },
+  { name: "Kontakt", linkTo: "contact" },
+];
 
 export const features = {
   title: "Nowoczesne farby do różnych powierzchni",
