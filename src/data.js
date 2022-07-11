@@ -41,6 +41,8 @@ export const statsDetails = [
   },
 ];
 
+export const navigation = {};
+
 export const features = {
   title: "Nowoczesne farby do różnych powierzchni",
   image: <Mieszalnik />,
@@ -176,4 +178,10 @@ export const products = {
       ],
     },
   ],
+};
+
+export const footer = {
+  title: "PaintShop+",
+  tel1: "542 234 533",
+  mail: "paintshop@sklep.pl",
 };
