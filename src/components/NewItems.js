@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { newInStore } from "../data";
 import NewItemsSlider from "./NewItemsSlider";
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 const NewItems = () => {
   const { title, subtitle, link, icon } = newInStore;
-
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
   return (
-    <section className="section">
+    <section data-aos="fade-up" className="section">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row relative">
           <div className="flex md:flex-col items-baseline gap-x-6 mb-6 lg:mb-0">

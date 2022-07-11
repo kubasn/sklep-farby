@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { menuDetails } from "../data";
 import Stats from "./Stats";
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 const { title, subtitle, buttonText } = menuDetails;
 
 const Menu = () => {
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   return (
     <section
       className="h-[850px] w-full bg-menu bg-cover text-slate-100 bg-no-repeat text- 
     pt-[175px] pb-[254px] relative mb-12 lg:bg-center lg:mb-28"
     >
-      <div className="container mx-auto text-center ">
+      <div data-aos="fade-up" className="container mx-auto text-center ">
         <h1 className="text-2xl mx-auto font-semibold mb-[30px] lg:text-[54px] lg:leading-tight lg:max-w-[888px]">
           {title}
         </h1>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { footer } from "../data";
 import {
   BsYoutube,
@@ -7,9 +7,14 @@ import {
   BsFillTelephoneFill,
 } from "react-icons/bs";
 import { AiFillMail } from "react-icons/ai";
+// import Aos from "aos";
+// import "aos/dist/aos.css";
 
 const Footer = () => {
   const { title, tel1, mail } = footer;
+  // useEffect(() => {
+  //   Aos.init({ duration: 2000 });
+  // }, []);
   return (
     <div className="bg-stone-900 flex">
       <div className="pt-8 pb-36 w-[calc(50%-2px)] flex flex-col items-center">
