@@ -42,7 +42,7 @@ export const statsDetails = [
 ];
 
 export const navigation = [
-  { name: "Home", linkTo: "home" },
+  { name: "Home", linkTo: "/" },
   { name: "O nas", linkTo: "about-us" },
   { name: "Farby", linkTo: "paints" },
   { name: "Gdzie kupić", linkTo: "contact" },
@@ -119,6 +119,7 @@ export const products = {
           name: "Samtex niebieska",
           price: 75,
           capacity: 1,
+          category: "interior",
         },
         {
           image: <Product2Img />,
@@ -126,6 +127,7 @@ export const products = {
           name: "Samtex biały",
           price: 50,
           capacity: 1,
+          category: "interior",
         },
         {
           image: <Product3Img />,
@@ -133,6 +135,7 @@ export const products = {
           name: "Samtex szary",
           price: 105,
           capacity: 2,
+          category: "interior",
         },
         {
           image: <Product4Img />,
@@ -140,6 +143,7 @@ export const products = {
           name: "Capasilan brązowy",
           price: 75,
           capacity: 1.5,
+          category: "wood",
         },
         {
           image: <Product5Img />,
@@ -147,6 +151,7 @@ export const products = {
           name: "Steel 9 czarny",
           price: 200,
           capacity: 5,
+          category: "steel",
         },
       ],
     },
@@ -158,6 +163,7 @@ export const products = {
           name: "Steel 9 biały",
           price: 45,
           capacity: 0.5,
+          category: "steel",
         },
         {
           image: <Product7Img />,
@@ -165,6 +171,7 @@ export const products = {
           name: "Wood+ antracyt",
           price: 225,
           capacity: 4,
+          category: "wood",
         },
         {
           image: <Product8Img />,
@@ -172,6 +179,7 @@ export const products = {
           name: "Wood+ dąbowy",
           price: 105,
           capacity: 2,
+          category: "wood",
         },
         {
           image: <Product9Img />,
@@ -179,6 +187,7 @@ export const products = {
           name: "Wood+ sosna mahoń",
           price: 75,
           capacity: 1.5,
+          category: "wood",
         },
       ],
     },

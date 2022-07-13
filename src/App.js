@@ -6,12 +6,14 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import Menu from "./components/Menu";
+import PaintsPage from "./pages/PaintsPage";
 
 function App() {
   const content = (
     <Routes>
       <Route path="/contact" element={<Contact />} />
       <Route path="/" element={<Home />} />
+      <Route path="paints" element={<PaintsPage />} />
     </Routes>
   );
   const header = <Header />;
