@@ -1,25 +1,29 @@
 import "./App.css";
-import Features from "./components/Features";
-import Features2 from "./components/Features2";
-import Footer from "./components/Footer";
+import { Routes, Route, Link, BrowserRouter as Router } from "react-router-dom";
+import Home from "./pages/Home";
+import Layout from "./components/Layout";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Contact from "./pages/Contact";
 import Menu from "./components/Menu";
-import NewItems from "./components/NewItems";
-import Newsletter from "./components/Newsletter";
-import Products from "./components/Products";
 
 function App() {
+  const content = (
+    <Routes>
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/" element={<Home />} />
+    </Routes>
+  );
+  const header = <Header />;
+  const footer = <Footer />;
+  const menu = <Menu />;
+
   return (
-    <div className="w-full max-w-[1440px] mx-auto bg-white">
-      <Header />
-      <Menu />
-      <Features />
-      <NewItems />
-      <Features2 />
-      <Products />
-      <Newsletter />
-      <Footer />
-    </div>
+    <Router>
+      <div className="w-full max-w-[1440px] mx-auto bg-white">
+        <Layout content={content} menu={menu} header={header} footer={footer} />
+      </div>
+    </Router>
   );
 }
 

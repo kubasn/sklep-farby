@@ -45,7 +45,7 @@ export const navigation = [
   { name: "Home", linkTo: "home" },
   { name: "O nas", linkTo: "about-us" },
   { name: "Farby", linkTo: "paints" },
-  { name: "Kontakt", linkTo: "contact" },
+  { name: "Gdzie kupić", linkTo: "contact" },
 ];
 
 export const features = {
@@ -189,4 +189,38 @@ export const footer = {
   title: "PaintShop+",
   tel1: "542 234 533",
   mail: "paintshop@sklep.pl",
+};
+
+export const contact = {
+  main: {},
+  centralPoint: {
+    name: "PaintShop centrala",
+    location: "Kraków Podgórze",
+    tel: "654 454 002",
+    mail: "centrala@sklep.pl",
+    workingHours: "8.00-17.00",
+  },
+  sellingPoints: [
+    {
+      name: "Farbex",
+      location: "Kraków centrum",
+      tel: "123 134 542",
+      mail: "sklepkrakow@sklep.pl",
+      workingHours: "8.00-17.00",
+    },
+    {
+      name: "BudPol",
+      location: "Warszawa Praga",
+      tel: "145 654 866",
+      mail: "sklepwarszawa@sklep.pl",
+      workingHours: "9.00-17.00",
+    },
+    {
+      name: "DomOgród",
+      location: "Wieliczka",
+      tel: "888 350 823",
+      mail: "sklepwarszawa@sklep.pl",
+      workingHours: "6.00-17.00",
+    },
+  ],
 };
