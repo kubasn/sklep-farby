@@ -43,7 +43,6 @@ export const statsDetails = [
 
 export const navigation = [
   { name: "Home", linkTo: "/" },
-  { name: "O nas", linkTo: "about-us" },
   { name: "Farby", linkTo: "paints" },
   { name: "Gdzie kupić", linkTo: "contact" },
 ];

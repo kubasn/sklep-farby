@@ -56,13 +56,6 @@ const Header = () => {
                   Koszyk
                 </span>
               </li>
-              <div
-                className={`${
-                  showCard ? "hidden" : "block -z-10"
-                } bottom-0 transition-all duration-700 absolute top-10 right-0 `}
-              >
-                <ShoppingCard />
-              </div>
             </ul>
           </nav>
           <div
@@ -73,6 +66,9 @@ const Header = () => {
             <NavBar />
           </div>
         </div>
+      </div>
+      <div className="absolute h-[100vh] w-full">
+        <ShoppingCard />
       </div>
     </header>
   );
