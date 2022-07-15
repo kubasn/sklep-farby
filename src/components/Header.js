@@ -6,12 +6,16 @@ import { navigation } from "../data";
 import NavBar from "./NavBar";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ShoppingCard from "./ShoppingCard";
+import { BsFillCartFill } from "react-icons/bs";
 
 const Header = () => {
   const [bg, setBg] = useState(false);
   const [mobileView, setMobileView] = useState(false);
   const [showCard, setShowCard] = useState(true);
+
+  const { amount } = useSelector((state) => state.cart);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -51,10 +55,16 @@ const Header = () => {
                   </li>
                 );
               })}
-              <li className="relative" onClick={() => setShowCard(!showCard)}>
-                <span className="text-white text-2xl relative after:absolute after:w-full after:scale-x-0 after:h-[2px] after:left-0 after:bg-white after:-bottom-1 after:transition-transform after:duration-700 hover:after:scale-x-100 after:origin-bottom-left hover:cursor-pointer ">
-                  Koszyk
-                </span>
+              <li
+                className="relative flex hover:scale-125 transition-all duration-500 cursor-pointer"
+                onClick={() => setShowCard(!showCard)}
+              >
+                <Link to="cart">
+                  <BsFillCartFill className="text-white text-2xl absolute top-[6px]" />
+                  <span className="text-white absolute -right-10 -top-1 bg-slate-400 rounded-full w-6 h-6 text-center  ">
+                    {amount}
+                  </span>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -66,9 +76,6 @@ const Header = () => {
             <NavBar />
           </div>
         </div>
-      </div>
-      <div className="absolute h-[100vh] w-full">
-        <ShoppingCard />
       </div>
     </header>
   );

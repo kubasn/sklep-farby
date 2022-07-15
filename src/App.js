@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import Menu from "./components/Menu";
 import PaintsPage from "./pages/PaintsPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   const content = (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/" element={<Home />} />
       <Route path="paints" element={<PaintsPage />} />
+      <Route path="/cart" element={<CartPage />} />
     </Routes>
   );
   const header = <Header />;
