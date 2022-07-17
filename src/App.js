@@ -8,8 +8,13 @@ import Contact from "./pages/Contact";
 import Menu from "./components/Menu";
 import PaintsPage from "./pages/PaintsPage";
 import CartPage from "./pages/CartPage";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { calcTotals } from "./features/cartSlice";
 
 function App() {
+  const { cartItems } = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
   const content = (
     <Routes>
       <Route path="/contact" element={<Contact />} />
@@ -21,6 +26,10 @@ function App() {
   const header = <Header />;
   const footer = <Footer />;
   const menu = <Menu />;
+
+  useEffect(() => {
+    dispatch(calcTotals());
+  }, [cartItems]);
 
   return (
     <Router>

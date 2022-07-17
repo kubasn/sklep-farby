@@ -6,6 +6,7 @@ import Product4Img from "./assets/paintGray.jpeg";
 
 const cartItems = [
   {
+    id: 1,
     image: <Product2Img />,
     icon: <IoMdAddCircle />,
     name: "Samtex biały",
@@ -15,6 +16,7 @@ const cartItems = [
     amount: 1,
   },
   {
+    id: 2,
     image: <Product3Img />,
     icon: <IoMdAddCircle />,
     name: "Samtex szary",
@@ -24,6 +26,7 @@ const cartItems = [
     amount: 1,
   },
   {
+    id: 3,
     image: <Product4Img />,
     icon: <IoMdAddCircle />,
     name: "Capasilan brązowy",
