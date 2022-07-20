@@ -8,7 +8,7 @@ const CartItem = (props) => {
   return (
     <div className="flex justify-left lg:justify-center border-b first-of-type:border-t py-4 px-6  w-full lg:w-3/4 mx-auto ">
       <div className="w-full lg:w-1/2 flex flex-col items-center  lg:flex-row">
-        <img className="w-[200px] border" src={props.image.type} />
+        <img className="w-[200px] border" src={props.image} />
         <div className="lg:ml-10 w-full">
           <h2 className=" text-2xl font-semibold flex justify-center lg:justify-start">
             {props.name}

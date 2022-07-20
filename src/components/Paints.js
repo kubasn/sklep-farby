@@ -1,5 +1,4 @@
 import React from "react";
-import { products } from "../data";
 import Product from "./Product";
 import {
   BsFillArrowLeftCircleFill,
@@ -8,7 +7,7 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 
-const Paints = () => {
+const Paints = (props) => {
   const [page, setPage] = useState(1);
   const [disablePrev, setDisablePrev] = useState(true);
   const [disableNext, setDisableNext] = useState(false);
@@ -30,7 +29,7 @@ const Paints = () => {
   return (
     <div className="w-full">
       <div className="grid  lg:gap-x-[40px] grid-cols-2 lg:grid-cols-3 w-[96%] mx-auto xl:grid-cols-4 justify-center">
-        {products.items[page - 1].page.map((item, key) => {
+        {props.items.map((item, key) => {
           return <Product key={key} {...item} />;
         })}
       </div>

@@ -10,10 +10,12 @@ import PaintsPage from "./pages/PaintsPage";
 import CartPage from "./pages/CartPage";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { calcTotals } from "./features/cartSlice";
+import { calcTotals, getCartItems } from "./features/cartSlice";
+import { getPaints } from "./features/paintsSlice";
 
 function App() {
   const { cartItems } = useSelector((store) => store.cart);
+  const { isLoading } = useSelector((store) => store.paints);
   const dispatch = useDispatch();
   const content = (
     <Routes>
@@ -30,6 +32,12 @@ function App() {
   useEffect(() => {
     dispatch(calcTotals());
   }, [cartItems]);
+
+  useEffect(() => {
+    dispatch(getPaints());
+  }, []);
+
+  if (isLoading) return <div>loading...</div>;
 
   return (
     <Router>
