@@ -6,53 +6,63 @@ import {
   query,
   limit,
   startAfter,
+  startAt,
   orderBy,
 } from "@firebase/firestore";
 import db from "../firebase";
+import { useSelector } from "react-redux";
 
 const initialState = {
   items: [],
   amount: 0,
   price: 0,
   isLoading: true,
+  lastDoc: "",
+  page: 1,
 };
 
-const lastDoc = null;
-
-export const getPaints = createAsyncThunk("paints/getPaintsItems", () => {
-  let itemsArray = [];
-
-  const q = query(
-    collection(db, "farby"),
-    orderBy("name"),
-    startAfter("Samtex szary"),
-    limit(4)
-  );
-
-  const querySnapshot = getDocs(q)
-    .then((res) => {
-      res.forEach((doc) => {
-        itemsArray.push(doc.data());
-        // console.log(doc.id, " => ", doc.data());
-      });
-      console.log(itemsArray);
-      return itemsArray;
-    })
-    .catch((err) => console.log(err));
-  return querySnapshot;
-});
+export const getPaints = createAsyncThunk(
+  "paints/getPaintsItems",
+  (lastDoc) => {
+    let itemsArray = [];
+    const q = query(
+      collection(db, "farby"),
+      orderBy("name"),
+      startAt(lastDoc),
+      limit(4)
+    );
+    //
+    const querySnapshot = getDocs(q)
+      .then((res) => {
+        res.forEach((doc) => {
+          itemsArray.push(doc.data());
+        });
+        return { itemsArray };
+      })
+      .catch((err) => console.log(err));
+    return querySnapshot;
+  }
+);
 
 const paintSlice = createSlice({
   name: "paints",
   initialState,
-  reducers: {},
+  reducers: {
+    increasePage: (state, { payload }) => {
+      state.page++;
+      state.lastDoc = payload;
+    },
+    decreasePage: (state) => {
+      state.page--;
+    },
+  },
   extraReducers: {
     [getPaints.pending]: (state) => {
       state.isLoading = true;
     },
     [getPaints.fulfilled]: (state, action) => {
       console.log(action);
-      state.items = action.payload;
+      state.items = action.payload.itemsArray;
       state.isLoading = false;
     },
     [getPaints.rejected]: (state) => {
@@ -60,5 +70,7 @@ const paintSlice = createSlice({
     },
   },
 });
+
+export const { increasePage, decreasePage } = paintSlice.actions;
 
 export default paintSlice.reducer;

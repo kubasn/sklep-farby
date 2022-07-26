@@ -34,7 +34,7 @@ function App() {
   }, [cartItems]);
 
   useEffect(() => {
-    dispatch(getPaints());
+    dispatch(getPaints(""));
   }, []);
 
   if (isLoading) return <div>loading...</div>;
