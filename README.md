@@ -1,3 +1,33 @@
+# Sklep z forbami
+
+## Description
+
+This is full-stack project for House Projects Selling System.
+
+## Technologies
+
+To create this project I've used React.JS, MongoDB, NODE.JS, Express.JS
+
+[![technologies](https://skills.thijs.gg/icons?i=react,mongodb,nodejs)](https://skills.thijs.gg)
+
+deployed at: https://sklep-z-farbami.web.app/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
