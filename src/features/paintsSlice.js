@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   collection,
-  doc,
   getDocs,
   query,
   limit,
   startAfter,
   startAt,
+  endBefore,
+  limitToLast,
+  endAt,
   orderBy,
 } from "@firebase/firestore";
 import db from "../firebase";
@@ -28,10 +30,34 @@ export const getPaints = createAsyncThunk(
     const q = query(
       collection(db, "farby"),
       orderBy("name"),
-      startAt(lastDoc),
+      startAfter(lastDoc),
       limit(4)
     );
     //
+    const querySnapshot = getDocs(q)
+      .then((res) => {
+        res.forEach((doc) => {
+          itemsArray.push(doc.data());
+        });
+        return { itemsArray };
+      })
+      .catch((err) => console.log(err));
+    return querySnapshot;
+  }
+);
+
+export const getprevPaints = createAsyncThunk(
+  "paints/getprevPaintsItems",
+  (lastDoc) => {
+    let itemsArray = [];
+    const q = query(
+      collection(db, "farby"),
+      orderBy("name"),
+      endAt(lastDoc),
+      limit(4)
+    );
+    //
+    console.log(q);
     const querySnapshot = getDocs(q)
       .then((res) => {
         res.forEach((doc) => {
@@ -66,6 +92,17 @@ const paintSlice = createSlice({
       state.isLoading = false;
     },
     [getPaints.rejected]: (state) => {
+      state.isLoading = false;
+    },
+    [getprevPaints.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getprevPaints.fulfilled]: (state, action) => {
+      console.log(action);
+      state.items = action.payload.itemsArray;
+      state.isLoading = false;
+    },
+    [getprevPaints.rejected]: (state) => {
       state.isLoading = false;
     },
   },

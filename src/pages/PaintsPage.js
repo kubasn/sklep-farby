@@ -8,7 +8,12 @@ import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
 } from "react-icons/bs";
-import { decreasePage, getPaints, increasePage } from "../features/paintsSlice";
+import {
+  decreasePage,
+  getPaints,
+  getprevPaints,
+  increasePage,
+} from "../features/paintsSlice";
 
 const PaintsPage = () => {
   const paints = useSelector((state) => state.paints);
@@ -24,7 +29,7 @@ const PaintsPage = () => {
     console.log(items.length);
     if (sign == "-") {
       dispatch(decreasePage());
-      dispatch(getPaints(lastDoc));
+      dispatch(getprevPaints(title));
     } else if (sign == "+") {
       dispatch(increasePage(firstElement));
       dispatch(getPaints(title));
