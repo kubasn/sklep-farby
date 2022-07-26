@@ -37,7 +37,9 @@ export const getPaints = createAsyncThunk(
     const querySnapshot = getDocs(q)
       .then((res) => {
         res.forEach((doc) => {
-          itemsArray.push(doc.data());
+          let item = doc.data();
+          item.id = doc.id;
+          itemsArray.push(item);
         });
         return { itemsArray };
       })

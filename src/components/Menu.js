@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 
 import { menuDetails } from "../data";
+import { useNavigate } from "react-router-dom";
 import Stats from "./Stats";
 import Aos from "aos";
 import "aos/dist/aos.css";
 const { title, subtitle, buttonText } = menuDetails;
 
 const Menu = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
@@ -23,7 +25,10 @@ const Menu = () => {
         <h2 className="mb-[30px] max-w-[627px] mx-auto lg:text-xl">
           {subtitle}
         </h2>
-        <button className="bg-[rgba(255,255,255,0.4)] hover:bg-[rgba(255,255,255,0.6)] px-[25px] py-[8px] mb-[160px] text-xl rounded-md backdrop-blur-md transition duration-500 lg:px-[80px] lg:py-[18px] lg:mb-[194px] ">
+        <button
+          onClick={() => navigate("/paints")}
+          className="bg-[rgba(255,255,255,0.4)] hover:bg-[rgba(255,255,255,0.6)] px-[25px] py-[8px] mb-[160px] text-xl rounded-md backdrop-blur-md transition duration-500 lg:px-[80px] lg:py-[18px] lg:mb-[194px] "
+        >
           {buttonText}
         </button>
         <div>

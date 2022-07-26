@@ -18,10 +18,10 @@ export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
         itemsArray.push(doc.data());
         // console.log(doc.id, " => ", doc.data());
       });
-      console.log(itemsArray);
       return itemsArray;
     })
     .catch((err) => console.log(err));
+  console.log(itemsArray);
   return querySnapshot;
 });
 

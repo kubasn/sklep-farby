@@ -38,7 +38,7 @@ const Product = (props) => {
             </span>
             <span>
               <label className="font-semibold">Pojemność:</label>{" "}
-              {props.capacity}
+              {props.capacity}L
             </span>
           </div>
         </div>

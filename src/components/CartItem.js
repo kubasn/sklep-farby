@@ -5,6 +5,7 @@ import { decrease, increase, removeItem } from "../features/cartSlice";
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
+  console.log(props);
   return (
     <div className="flex justify-left lg:justify-center border-b first-of-type:border-t py-4 px-6  w-full lg:w-3/4 mx-auto ">
       <div className="w-full lg:w-1/2 flex flex-col items-center  lg:flex-row">
@@ -26,7 +27,7 @@ const CartItem = (props) => {
         <div className="flex  lg:flex-col items-center justify-center gap-x-5 ">
           <button
             onClick={() => dispatch(increase(props.id))}
-            className="bg-gray-900 w-[50px] h-[50px] rounded-full text-white flex justify-center items-center text-2xl hover:bg-lime-600 transition order-2 lg:-order-2"
+            className="bg-gray-900 w-[40px] h-[40px] rounded-full text-white flex justify-center items-center text-2xl hover:bg-lime-600 transition order-2 lg:-order-2"
           >
             +
           </button>
@@ -40,7 +41,7 @@ const CartItem = (props) => {
               }
               dispatch(decrease(props.id));
             }}
-            className="bg-gray-900 w-[50px] h-[50px] rounded-full text-white flex justify-center items-center text-2xl hover:bg-red-600 transition -order-1 lg:order-1  "
+            className="bg-gray-900 w-[40px] h-[40px] rounded-full text-white flex justify-center items-center text-2xl hover:bg-red-600 transition -order-1 lg:order-1  "
           >
             -
           </button>
