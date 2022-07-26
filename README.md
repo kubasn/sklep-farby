@@ -2,11 +2,11 @@
 
 ## Description
 
-This is full-stack project for House Projects Selling System.
+This is mainly frontend project for online paints shop.
 
 ## Technologies
 
-To create this project I've used React.JS, MongoDB, NODE.JS, Express.JS
+To create this project I've used React.JS, Firebase, React Redux and Tailwind CSS
 
 [![technologies](https://skills.thijs.gg/icons?i=react,mongodb,nodejs)](https://skills.thijs.gg)
 
