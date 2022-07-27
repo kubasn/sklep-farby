@@ -34,16 +34,22 @@ const CartPage = () => {
           return <CartItem key={key} {...item} />;
         })}
       </div>
-      <div className="flex justify-center gap-x-10 text-2xl">
+      <div className="flex justify-center gap-x-2 text-2xl">
         <span>Do zapłaty:</span>
         <span>{price} złotych</span>
       </div>
-      <div className="w-full py-4">
+      <div className="w-full py-4 flex flex-col gap-4 sm:flex-row mx-auto sm:gap-4 sm:justify-center">
         <button
-          onClick={() => dispatch(openModal())}
-          className="bg-white border border-1 rounded-[3px] px-2 text-rose-700 border-rose-700 shadow-sm shadow-rose-700 mx-auto uppercase font-semibold block transition-all hover:scale-110 hover:bg-rose-700 hover:text-white hover:font-normal "
+          onClick={() => dispatch(openModal("removeCart"))}
+          className="bg-white border border-1 rounded-[3px] px-2 text-rose-700 border-rose-700 shadow-sm shadow-rose-700  uppercase font-semibold block transition-all sm:hover:scale-110 hover:bg-rose-700 hover:text-white hover:font-normal "
         >
           Wyczyść koszyk
+        </button>
+        <button
+          onClick={() => dispatch(openModal("makeOrder"))}
+          className="bg-white border border-1 rounded-[3px] px-2 text-green-700 border-green-700 shadow-sm shadow-green-700 capitalize font-semibold  transition-all sm:hover:scale-110 hover:bg-green-700 hover:text-white hover:font-normal  "
+        >
+          zamów
         </button>
       </div>
     </div>
