@@ -1,3 +1,33 @@
+# Sklep z forbami //still under development
+
+## Description
+
+This is mainly frontend project for online paints shop.
+
+## Technologies
+
+To create this project I've used React.JS, Firebase, React Redux and Tailwind CSS
+
+[![technologies](https://skills.thijs.gg/icons?i=react,firebase,redux,tailwind)](https://skills.thijs.gg)
+
+deployed at: https://sklep-z-farbami.web.app/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
