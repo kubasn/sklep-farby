@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { calcTotals, getCartItems } from "./features/cartSlice";
 import { getPaints } from "./features/paintsSlice";
+import Account from "./pages/Account";
 
 function App() {
   const { cartItems } = useSelector((store) => store.cart);
@@ -23,6 +24,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="paints" element={<PaintsPage />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="account" element={<Account />} />
     </Routes>
   );
   const header = <Header />;

@@ -6,16 +6,39 @@ import { navigation } from "../data";
 import NavBar from "./NavBar";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ShoppingCard from "./ShoppingCard";
 import { BsFillCartFill } from "react-icons/bs";
+import { auth, googleSignIn, provider } from "../firebase";
+import { selectUserInfo, setLoginInfo } from "../features/userSlice";
 
 const Header = () => {
   const [bg, setBg] = useState(false);
   const [mobileView, setMobileView] = useState(false);
   const [showCard, setShowCard] = useState(true);
-
+  const dispatch = useDispatch();
   const { amount } = useSelector((state) => state.cart);
+  const user = useSelector(selectUserInfo);
+
+  const handleAuth = async () => {
+    if (!user.login) {
+      try {
+        const details = await googleSignIn();
+        console.log(details.user.email);
+        const user = details.user;
+
+        dispatch(
+          setLoginInfo({
+            name: user.displayName,
+            email: user.email,
+            userImg: user.photoURL,
+          })
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -37,12 +60,12 @@ const Header = () => {
 
           <div
             onClick={() => setMobileView(!mobileView)}
-            className="text-5xl text-white cursor-pointer md:hidden"
+            className="text-5xl text-white cursor-pointer lg:hidden"
           >
             {mobileView ? <CgClose /> : <CgMenuRight />}
           </div>
-          <nav className="hidden md:flex ">
-            <ul className="md:flex md:gap-14 relative">
+          <nav className="hidden lg:flex ">
+            <ul className="lg:flex lg:gap-14 relative">
               {navigation.map((item, index) => {
                 return (
                   <li className="relative" key={index}>
@@ -55,6 +78,18 @@ const Header = () => {
                   </li>
                 );
               })}
+              {!user.name ? (
+                <li
+                  onClick={() => handleAuth()}
+                  className="text-white text-2xl relative after:absolute after:w-full after:scale-x-0 after:h-[2px] after:left-0 after:bg-white after:-bottom-1 after:transition-transform after:duration-700 hover:pointer hover:after:scale-x-100 hover:cursor-pointer after:origin-bottom-left"
+                >
+                  Logowanie
+                </li>
+              ) : (
+                <li className="text-white text-2xl relative after:absolute after:w-full after:scale-x-0 after:h-[2px] after:left-0 after:bg-white after:-bottom-1 after:transition-transform after:duration-700 hover:pointer hover:after:scale-x-100 hover:cursor-pointer after:origin-bottom-left">
+                  <Link to="account">Profil</Link>
+                </li>
+              )}
               <li
                 className="relative flex hover:scale-125 transition-all duration-500 cursor-pointer"
                 onClick={() => setShowCard(!showCard)}
@@ -71,9 +106,9 @@ const Header = () => {
           <div
             className={`${
               mobileView ? "left-0" : "-left-full"
-            } md:hidden fixed bottom-0 w-full max-w-xs h-screen transition-all duration-700 `}
+            } lg:hidden fixed bottom-0 w-full max-w-xs h-screen transition-all duration-700 `}
           >
-            <NavBar />
+            <NavBar handleAuth={handleAuth} />
           </div>
         </div>
       </div>
