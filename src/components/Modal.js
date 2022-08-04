@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../features/cartSlice";
 import { closeModal } from "../features/modalSlice";
 
-const Modal = () => {
+const Modal = (props) => {
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.modal);
 
@@ -22,6 +22,7 @@ const Modal = () => {
             onClick={() => {
               dispatch(closeModal());
               dispatch(clearCart());
+              if (modal.type == "makeOrder") props.makeOrder();
             }}
             className="text-xl border border-green-700 hover:bg-green-700 hover:text-white transition duration-500 py-1 px-4 rounded-sm shadow-md"
           >

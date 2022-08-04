@@ -4,9 +4,13 @@ import CartItem from "../components/CartItem";
 import Modal from "../components/Modal";
 import { clearCart } from "../features/cartSlice";
 import { openModal } from "../features/modalSlice";
+import { collection, doc, setDoc, query } from "@firebase/firestore";
+import db from "../firebase";
 
 const CartPage = () => {
   const { cartItems, price, amount } = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
   const { isOpen } = useSelector((state) => state.modal);
 
@@ -21,9 +25,30 @@ const CartPage = () => {
     );
   }
 
+  //import { doc, setDoc } from "firebase/firestore";
+
+  let makeOrder = async () => {
+    let id = Math.floor(Math.random() * 100000);
+    console.log(id);
+    await setDoc(doc(db, "orders", id.toString()), {
+      name: user.name,
+      email: user.email,
+      totalPrice: price,
+      amount: amount,
+      products: cartItems,
+    });
+
+    // await setDoc(doc(db, "orders", "LawdA"), {
+    //   name: "Los Angeles",
+    //   state: "CA",
+    //   country: "USA",
+    // });
+    // console.log(cartItems, price, amount, user);
+  };
+
   return (
     <div className="w-full h-full relative">
-      {isOpen && <Modal />}
+      {isOpen && <Modal makeOrder={makeOrder} />}
       <div className="w-full lg:w-1/3 mx-auto">
         <h2 className="text-4xl font-semibold text-center uppercase text-stone-800 mb-14  ">
           Twoje zakupy
@@ -45,12 +70,18 @@ const CartPage = () => {
         >
           Wyczyść koszyk
         </button>
-        <button
-          onClick={() => dispatch(openModal("makeOrder"))}
-          className="bg-white border border-1 rounded-[3px] px-2 text-green-700 border-green-700 shadow-sm shadow-green-700 capitalize font-semibold  transition-all sm:hover:scale-110 hover:bg-green-700 hover:text-white hover:font-normal  "
-        >
-          zamów
-        </button>
+        {user.name ? (
+          <button
+            onClick={() => dispatch(openModal("makeOrder"))}
+            className="bg-white border border-1 rounded-[3px] px-2 text-green-700 border-green-700 shadow-sm shadow-green-700 capitalize font-semibold  transition-all sm:hover:scale-110 hover:bg-green-700 hover:text-white hover:font-normal  "
+          >
+            zamów
+          </button>
+        ) : (
+          <span className="text-gray-700">
+            Zaloguj się, aby złożyć zamówienie
+          </span>
+        )}
       </div>
     </div>
   );

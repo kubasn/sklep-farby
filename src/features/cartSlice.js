@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import cartItems from "../cartItems";
-import { collection, doc, getDocs, query } from "@firebase/firestore";
+import { collection, doc, getDocs, query, where } from "@firebase/firestore";
 import db from "../firebase";
 
 const initialState = {
@@ -10,18 +10,20 @@ const initialState = {
   isLoading: true,
 };
 
-export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
+export const getOrders = createAsyncThunk("orders/getOrders", (name) => {
   let itemsArray = [];
-  const querySnapshot = getDocs(collection(db, "farby"))
+  const q = query(collection(db, "orders"), where("name", "==", name));
+  //
+  const querySnapshot = getDocs(q)
     .then((res) => {
       res.forEach((doc) => {
-        itemsArray.push(doc.data());
-        // console.log(doc.id, " => ", doc.data());
+        let item = doc.data();
+        item.id = doc.id;
+        itemsArray.push(item);
       });
-      return itemsArray;
+      return { itemsArray };
     })
     .catch((err) => console.log(err));
-  console.log(itemsArray);
   return querySnapshot;
 });
 
@@ -66,15 +68,15 @@ const cartSlice = createSlice({
     },
   },
   extraReducers: {
-    [getCartItems.pending]: (state) => {
+    [getOrders.pending]: (state) => {
       state.isLoading = true;
     },
-    [getCartItems.fulfilled]: (state, action) => {
+    [getOrders.fulfilled]: (state, action) => {
       console.log(action);
-      state.cartItems = action.payload;
+      state.items = action.payload.itemsArray;
       state.isLoading = false;
     },
-    [getCartItems.rejected]: (state) => {
+    [getOrders.rejected]: (state) => {
       state.isLoading = false;
     },
   },

@@ -20,11 +20,11 @@ function App() {
   const dispatch = useDispatch();
   const content = (
     <Routes>
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/" element={<Home />} />
+      <Route path="contact" element={<Contact />} />
       <Route path="paints" element={<PaintsPage />} />
-      <Route path="/cart" element={<CartPage />} />
-      <Route path="account" element={<Account />} />
+      <Route path="cart" element={<CartPage />} />
+      <Route path="account/*" element={<Account />} />
+      <Route path="/" element={<Home />} />
     </Routes>
   );
   const header = <Header />;
