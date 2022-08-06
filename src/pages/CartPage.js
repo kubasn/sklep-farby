@@ -29,7 +29,6 @@ const CartPage = () => {
 
   let makeOrder = async () => {
     let id = Math.floor(Math.random() * 100000);
-    console.log(id);
     await setDoc(doc(db, "orders", id.toString()), {
       name: user.name,
       email: user.email,
@@ -37,13 +36,6 @@ const CartPage = () => {
       amount: amount,
       products: cartItems,
     });
-
-    // await setDoc(doc(db, "orders", "LawdA"), {
-    //   name: "Los Angeles",
-    //   state: "CA",
-    //   country: "USA",
-    // });
-    // console.log(cartItems, price, amount, user);
   };
 
   return (
