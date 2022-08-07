@@ -9,12 +9,12 @@ const CartItem = (props) => {
   return (
     <div className="flex justify-left lg:justify-center border-b first-of-type:border-t py-4 px-6  w-full lg:w-3/4 mx-auto ">
       <div className="w-full lg:w-1/2 flex flex-col items-center  lg:flex-row">
-        <img className="w-[200px] border" src={props.image} />
-        <div className="lg:ml-10 w-full">
-          <h2 className=" text-2xl font-semibold flex justify-center lg:justify-start">
+        <img className="w-1/3 border" src={props.image} />
+        <div className="lg:ml-10 w-1/3">
+          <h2 className=" text-2xl font-semibold text-center flex justify-center lg:justify-start">
             {props.name}
           </h2>
-          <div className="flex flex-col items-center lg:items-start mt-2 ml-3">
+          <div className="flex flex-col items-center text-center lg:items-start mt-2 xl:ml-3">
             <span className="text-xl">{props.price} zł</span>
             <button
               onClick={() => dispatch(removeItem(props.id))}
@@ -24,7 +24,7 @@ const CartItem = (props) => {
             </button>
           </div>
         </div>
-        <div className="flex  lg:flex-col items-center justify-center gap-x-5 ">
+        <div className="flex xl:ml-1  lg:flex-col items-center justify-center gap-x-5 w-1/3 ">
           <button
             onClick={() => dispatch(increase(props.id))}
             className="bg-gray-900 w-[40px] h-[40px] rounded-full text-white flex justify-center items-center text-2xl hover:bg-lime-600 transition order-2 lg:-order-2"

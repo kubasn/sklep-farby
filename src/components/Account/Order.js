@@ -25,19 +25,20 @@ const Order = (props) => {
         <div className="flex flex-col mb-2">
           {props.products.map((product) => {
             return (
-              <div className="flex">
-                <div className="w-1/3 text-left">
+              <div className="flex flex-col items-start xl:flex-row">
+                <div className="w-full xl:w-1/3 text-left">
                   <span className="font-semibold ">nazwa: </span>
                   <span>{product.name}</span>
                 </div>
-                <div className="w-1/3 text-center">
+                <div className="w-full xl:w-1/3  text-left  xl:text-center">
                   <span className="font-semibold ">ilość: </span>
                   <span>{product.amount}szt</span>
                 </div>
-                <div className="w-1/3 text-center">
+                <div className="w-full xl:w-1/3 text-left  xl:text-center">
                   <span className="font-semibold ">cena za szt: </span>
                   <span>{product.price}zł</span>
                 </div>
+                <span className="w-full h-[1px] bg-gray-200 "></span>
               </div>
             );
           })}
