@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ShoppingCard from "./ShoppingCard";
 import { BsFillCartFill } from "react-icons/bs";
 import { auth, googleSignIn, provider } from "../firebase";
-import { selectUserInfo, setLoginInfo } from "../features/userSlice";
+import { logout, selectUserInfo, setLoginInfo } from "../features/userSlice";
 
 const Header = () => {
   const [bg, setBg] = useState(false);
@@ -86,9 +86,17 @@ const Header = () => {
                   Logowanie
                 </li>
               ) : (
-                <li className="text-white text-2xl relative after:absolute after:w-full after:scale-x-0 after:h-[2px] after:left-0 after:bg-white after:-bottom-1 after:transition-transform after:duration-700 hover:pointer hover:after:scale-x-100 hover:cursor-pointer after:origin-bottom-left">
-                  <Link to="account">Profil</Link>
-                </li>
+                <>
+                  <li className="text-white text-2xl relative after:absolute after:w-full after:scale-x-0 after:h-[2px] after:left-0 after:bg-white after:-bottom-1 after:transition-transform after:duration-700 hover:pointer hover:after:scale-x-100 hover:cursor-pointer after:origin-bottom-left">
+                    <Link to="account">Profil</Link>
+                  </li>
+                  <li
+                    onClick={() => dispatch(logout())}
+                    className="text-white text-2xl relative after:absolute after:w-full after:scale-x-0 after:h-[2px] after:left-0 after:bg-white after:-bottom-1 after:transition-transform after:duration-700 hover:pointer hover:after:scale-x-100 hover:cursor-pointer after:origin-bottom-left"
+                  >
+                    Wyloguj
+                  </li>
+                </>
               )}
               <li
                 className="relative flex hover:scale-125 transition-all duration-500 cursor-pointer"
